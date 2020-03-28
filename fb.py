@@ -1,0 +1,18 @@
+from tkinter import*
+top=Tk()
+top.geometry("400x250")
+Emailname=Label(top,text="Enter email: ").place(x=30,y=50)
+emailinput=Entry(top).place(x=80,y=50)
+passwordname=Label(top,text="Enter password :").place(x=30,y=90)
+passwordinput=Entry(top).place(x=80,y=90)
+submitbtn=Button(top,text="submit").place(x=30,y=130)
+from selenium import webdriver
+driver=webdriver.Firefox()
+driver.get("https://www.facebook.com")
+username=driver.find_element_by_id("email")
+username.send_keys(emailinput)
+password=driver.find_element_by_id("pass")
+password.send_keys(passwordinput)
+button=driver.find_element_by_id("loginbutton")
+button.click()
+top.mainloop()
